@@ -97,3 +97,13 @@ class WP_AdSavvy {
 }
 
 $wp_adsavvy = new WP_AdSavvy();
+
+// Add settings link on plugin page
+function wp_adsavvy_settings_link($links) { 
+  $settings_link = '<a href="options-general.php?page=wp_adsavvy.php">Settings</a>'; 
+  array_unshift($links, $settings_link); 
+  return $links; 
+}
+ 
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", 'wp_adsavvy_settings_link' );
